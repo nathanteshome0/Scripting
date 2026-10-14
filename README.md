@@ -1,8 +1,8 @@
-# Job Data Pipeline
+# Job Data Pipeline Project
 
-A Python project that scrapes job listings from the Real Python fake-jobs site, filters listings by job-title suffix, writes the results to a text file, and can optionally load the filtered records into Microsoft SQL Server.
+This is a Python project that scrapes job listings from the Real Python fake-jobs site, filters listings by job-title suffix, writes the results to a text file, and can optionally load the filtered records into Microsoft SQL Server.
 
-This repository began as an academic scripting project and has been cleaned up to demonstrate safer configuration, reusable Python functions, command-line options, error handling, and clearer project organization.
+This repository began as a scripting project for my scripting class and has been cleaned and revamped to demonstrate safer configuration, reusable Python functions, command-line options, error handling, and clearer project organization.
 
 ## Features
 
