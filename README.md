@@ -23,6 +23,8 @@ Scripting/
 │   └── jobs.txt
 ├── docs/
 │   ├── project-report.pdf
+│   ├── related-projects/
+│   │   └── remotive-job-dashboard.md
 │   └── screenshots/
 ├── src/
 │   └── job_scraper.py
@@ -111,9 +113,25 @@ The project separates scraping, file output, and database insertion into dedicat
 
 The SQL Server portion is optional, so the web-scraping and file-output portions can run without database access.
 
+## Related Project: Remotive Job Listings Dashboard
+
+This repository also documents a related IST 311 team project, **Website Data Scraper Dashboard for Job Listings**. It addressed the same general job-data automation problem using a different architecture:
+
+```text
+Remotive API -> scraper.py -> jobs.csv -> dashboard.py
+```
+
+Instead of parsing HTML with BeautifulSoup, that project collected remote-job data from the Remotive public API, stored the results in CSV format, and visualized them in an interactive Streamlit dashboard using Pandas and Plotly.
+
+The documented dashboard included summary statistics, a world map, a jobs-by-location chart, and a full job-listing table. In the project report, my role was testing the script and making adjustments to the dashboard.
+
+See [`docs/related-projects/remotive-job-dashboard.md`](docs/related-projects/remotive-job-dashboard.md) for the full companion-project summary.
+
+This related project is documented separately so the repository does not imply that the Remotive/Streamlit implementation and the Real Python/SQL implementation are the same codebase.
+
 ## Documentation
 
-The `docs/` directory contains the original project report and renamed verification screenshots showing the scraper output and SQL Server results.
+The `docs/` directory contains the original project report and renamed verification screenshots showing the scraper output and SQL Server results. It also contains documentation for related scripting coursework that directly connects to job-data collection and visualization.
 
 ## Skills Demonstrated
 
@@ -127,6 +145,8 @@ The `docs/` directory contains the original project report and renamed verificat
 - Environment-based configuration
 - Command-line interfaces
 - Basic ETL workflow design
+- API-based data collection
+- Data visualization concepts with Streamlit and Plotly
 
 ## Security
 
