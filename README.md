@@ -1,8 +1,8 @@
 # Job Data Pipeline Project
 
-This is a Python project that scrapes job listings from the Real Python fake-jobs site, filters listings by job-title suffix, writes the results to a text file, and can optionally load the filtered records into Microsoft SQL Server.
+A Python project that scrapes job listings from the Real Python fake-jobs site, filters listings by job-title suffix, writes the results to a text file, and can optionally load the filtered records into Microsoft SQL Server.
 
-This repository began as a scripting project for my scripting class and has been cleaned and revamped to demonstrate safer configuration, reusable Python functions, command-line options, error handling, and clearer project organization.
+This project was originally created for a scripting course and has been cleaned up for portfolio use with safer configuration, reusable functions, command-line options, error handling, and clearer project organization.
 
 ## Features
 
@@ -23,8 +23,6 @@ Scripting/
 │   └── jobs.txt
 ├── docs/
 │   ├── project-report.pdf
-│   ├── related-projects/
-│   │   └── remotive-job-dashboard.md
 │   └── screenshots/
 ├── src/
 │   └── job_scraper.py
@@ -64,9 +62,7 @@ python src/job_scraper.py --suffix engineer --output data/engineer_jobs.txt
 
 ### Save Results to SQL Server
 
-Copy `.env.example` values into environment variables for your system. Do not commit real credentials.
-
-Required variables:
+Set the following environment variables before using database output:
 
 ```text
 DB_SERVER
@@ -75,7 +71,7 @@ DB_USER
 DB_PASSWORD
 ```
 
-Optional variable:
+Optional:
 
 ```text
 DB_DRIVER
@@ -87,7 +83,7 @@ Then run:
 python src/job_scraper.py --save-to-db --project-id 47
 ```
 
-The script inserts records into `MidTerm.ProjectReport` using the following fields:
+The script inserts records into `MidTerm.ProjectReport` using:
 
 - `ProjID`
 - `SeqNo`
@@ -109,29 +105,13 @@ Medical physicist | Parker, Goodwin and Zavala | Bellberg, AP
 
 ## Implementation Notes
 
-The project separates scraping, file output, and database insertion into dedicated functions. The HTTP request uses a timeout and checks for failed responses before parsing. Database inserts use placeholders rather than constructing SQL from scraped values.
+The project separates scraping, file output, and database insertion into dedicated functions. HTTP requests use a timeout and validate failed responses before parsing. Database inserts use parameterized queries instead of constructing SQL from scraped values.
 
-The SQL Server portion is optional, so the web-scraping and file-output portions can run without database access.
-
-## Related Project: Remotive Job Listings Dashboard
-
-This repository also documents a related IST 311 team project, **Website Data Scraper Dashboard for Job Listings**. It addressed the same general job-data automation problem using a different architecture:
-
-```text
-Remotive API -> scraper.py -> jobs.csv -> dashboard.py
-```
-
-Instead of parsing HTML with BeautifulSoup, that project collected remote-job data from the Remotive public API, stored the results in CSV format, and visualized them in an interactive Streamlit dashboard using Pandas and Plotly.
-
-The documented dashboard included summary statistics, a world map, a jobs-by-location chart, and a full job-listing table. In the project report, my role was testing the script and making adjustments to the dashboard.
-
-See [`docs/related-projects/remotive-job-dashboard.md`](docs/related-projects/remotive-job-dashboard.md) for the full companion-project summary.
-
-This related project is documented separately so the repository does not imply that the Remotive/Streamlit implementation and the Real Python/SQL implementation are the same codebase.
+The SQL Server portion is optional, so the scraping and file-output portions can run without database access.
 
 ## Documentation
 
-The `docs/` directory contains the original project report and renamed verification screenshots showing the scraper output and SQL Server results. It also contains documentation for related scripting coursework that directly connects to job-data collection and visualization.
+The `docs/` directory contains the original project report and verification screenshots showing scraper output and SQL Server results.
 
 ## Skills Demonstrated
 
@@ -145,11 +125,9 @@ The `docs/` directory contains the original project report and renamed verificat
 - Environment-based configuration
 - Command-line interfaces
 - Basic ETL workflow design
-- API-based data collection
-- Data visualization concepts with Streamlit and Plotly
 
 ## Security
 
 Database passwords and other secrets should never be committed to a repository. This project uses environment variables for database configuration and includes `.env` in `.gitignore`.
 
-If a credential has ever been committed to Git history, removing it from the latest version does not invalidate the exposed credential. Rotate the credential and, when appropriate, remove the secret from repository history.
+If a credential has ever been committed to Git history, removing it from the latest version does not make that credential safe. Rotate it and, when appropriate, remove the secret from repository history.
