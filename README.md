@@ -20,8 +20,7 @@ This repository began as an academic scripting project and has been cleaned up t
 ```text
 Scripting/
 ├── data/
-│   ├── jobs.txt
-│   └── player_stats.csv
+│   └── jobs.txt
 ├── docs/
 │   ├── project-report.pdf
 │   └── screenshots/
@@ -32,8 +31,6 @@ Scripting/
 ├── README.md
 └── requirements.txt
 ```
-
-`player_stats.csv` is retained as a separate sample dataset from related database coursework and is not used by the job scraper.
 
 ## Requirements
 
@@ -112,7 +109,11 @@ Medical physicist | Parker, Goodwin and Zavala | Bellberg, AP
 
 The project separates scraping, file output, and database insertion into dedicated functions. The HTTP request uses a timeout and checks for failed responses before parsing. Database inserts use placeholders rather than constructing SQL from scraped values.
 
-The SQL Server portion is optional so the web-scraping and file-output portions can run without database access.
+The SQL Server portion is optional, so the web-scraping and file-output portions can run without database access.
+
+## Documentation
+
+The `docs/` directory contains the original project report and renamed verification screenshots showing the scraper output and SQL Server results.
 
 ## Skills Demonstrated
 
