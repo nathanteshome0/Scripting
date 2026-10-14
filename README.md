@@ -133,7 +133,3 @@ The `docs/` directory contains the original project report and renamed verificat
 Database passwords and other secrets should never be committed to a repository. This project uses environment variables for database configuration and includes `.env` in `.gitignore`.
 
 If a credential has ever been committed to Git history, removing it from the latest version does not invalidate the exposed credential. Rotate the credential and, when appropriate, remove the secret from repository history.
-
-## Author
-
-Nathan Teshome
